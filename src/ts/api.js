@@ -1,5 +1,5 @@
 
-import { filterMoviesData } from './mappers';
+import { filterMoviesData, filterSearchMovie} from './mappers';
 
 const config = {
     apiKey: "15d2ea6d0dc1d476efbca3eba2b9bbfb",
@@ -25,4 +25,16 @@ export async function getListMoviesData(movieListType, page = 1) {
 
     return filterMoviesData(data?.results ?? []);
 };
+
+
+//  --url 'https://api.themoviedb.org/3/search/movie?query=batman&include_adult=false&language=en-US&page=1' \
+
+
+export async function searchMovie(query, page = 1) {
+    const searchBaseUrl = `${config.baseUrl}search/movie?query=${query}&include_adult=false&language=${config.langIso}&api_key=${config.apiKey}&page=${page}`
+    const response = await fetch(searchBaseUrl)
+    const data = await response.json()
+    return filterSearchMovie(data?.results ?? [])
+}
+
 

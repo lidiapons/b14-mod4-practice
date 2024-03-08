@@ -4,7 +4,7 @@
   "description": "Bootcamp 14 Module 5 Practice",
   "main": "index.js",
   "scripts": {
-    "dev": "vite --host localhost --port 4000",
+    "dev": "vite --host localhost --port 8080",
     "build": "tsc && vite build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

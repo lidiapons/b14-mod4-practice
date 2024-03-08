@@ -19,3 +19,14 @@
         }
     })
 }
+
+export function filterSearchMovie(movies) {
+    return movies.map(movie => ({
+        id : movie.id,
+        title : movie.title,
+        overview : movie.overview,
+        porter_path : movie.porter_path,
+        year : movie.release_date.split("-").shift(),
+        rating : movie.rating,
+}))
+}
