@@ -6,7 +6,8 @@ import { showContent } from "../utils/utils";
 import { movieListType, getListMoviesData, searchMovie, } from "./api";
 import { filterSearchMovie } from "./mappers";
 
-searchMovie("batman").then((movie) => {
-    
+searchMovie("paco").then((movie) => {
+    console.log(movie)
 })
+
 
