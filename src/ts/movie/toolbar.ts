@@ -1,15 +1,17 @@
+import { addMovieGridLayoutListener, addMovieSelectLayoutListener } from "../../events/events";
+
 export function addMovieListToolbar(): void {
-    const appElement:any = document.getElementById("appp");
-    const toolbar = document.createElement("div");
-    toolbar.className = "toolbar";
-    toolbar.innerHTML= 
+  const appElement: any = document.getElementById("app");
+  const toolbar = document.createElement("div");
+  toolbar.className = "toolbar";
+  toolbar.innerHTML =
     `<div class="toolbar">
     <div class="container">
       <div>
       <button type="button" id="movie-grid-btn" class="btn btn-icon">
         <img src="grid-layout.svg" alt="grid icon">
       </button>
-      <button type="button" class="btn btn-icon">
+      <button type="button" id="movie-list-btn" class="btn btn-icon">
         <img src="list-layout.svg" alt="list icon">
       </button>
       </div>
@@ -28,7 +30,11 @@ export function addMovieListToolbar(): void {
       </div>
     </div>
   </div>`
-    appElement.appendChild(toolbar)
+  appElement.appendChild(toolbar)
+  
+addMovieGridLayoutListener()
+
+addMovieSelectLayoutListener()
 }
 
 

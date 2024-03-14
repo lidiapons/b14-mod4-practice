@@ -1,4 +1,5 @@
 import { filterMoviesData, filterSearchMovie} from '../ts/mappers';
+import { MovieList, MovieListType } from './models';
 
 const config = {
     apiKey: "15d2ea6d0dc1d476efbca3eba2b9bbfb",
@@ -6,14 +7,7 @@ const config = {
     baseUrl: "https://api.themoviedb.org/3/",
 };
 
-export const movieListType = {
-    nowPlayin: "now_playing",
-    popular: "popular",
-    topRated: "top_rated",
-    upcoming: "upcoming",
-}
-
-export async function getListMoviesData(movieListType: any, page = 1) {
+export async function getListMoviesData(movieListType: MovieListType, page = 1): Promise<MovieList[]> {
     const movieListUrl = `${config.baseUrl}/movie/${movieListType}?language=${config.langIso}&api_key=${config.apiKey}&page=${page}`;
     const response = await fetch(movieListUrl)
     const data = await response.json()
@@ -33,5 +27,5 @@ export async function searchMovie(query: string, page = 1) {
     const searchBaseUrl = `${config.baseUrl}search/movie?query=${query}&include_adult=false&language=${config.langIso}&api_key=${config.apiKey}&page=${page}`
     const response = await fetch(searchBaseUrl)
     const data = await response.json()
-    return filterSearchMovie(data?.results ?? [])
+    return filterMoviesData(data?.results ?? [])
 }

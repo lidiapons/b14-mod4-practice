@@ -2,35 +2,32 @@
 
 // @use "bootstrap-icons";
 
-
-.grid-item img {
-    height: 200px;
-    width: 150px;
-    border: 3px solid black;
-    box-shadow: 0px 1px 15px 1px;
+.card h1 {
+    font-size: 25px;
 }
 
-.d-grid h1 {
-    font-size: 20px;
-    text-transform: uppercase;
-    font-weight: bold;
-    padding: 15px 0 0 0;
+.card p {
+    font-size: 12px;
 }
 
-.d-flex {
-    padding: 5;
+.card img {
+    height: 300px;
+    width: 250px;
+    object-fit: cover;
+    padding: 25px;
 }
 
-#app{
-    background: #000;
-    height: 1000px;
-    width: 1200px;
-
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
 }
 
-// .container {
-//     background: #000;
-// }
+.list{
+    display: flex;
+    flex-wrap: wrap;
+}
 
 @import "bootstrap/scss/bootstrap";
 @import "./movie";
