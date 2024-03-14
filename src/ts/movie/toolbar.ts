@@ -28,9 +28,7 @@ export function addMovieListToolbar(): void {
       </div>
     </div>
   </div>`
-    
     appElement.appendChild(toolbar)
-
 }
 
 

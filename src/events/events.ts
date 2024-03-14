@@ -15,10 +15,9 @@ export function addMovieGridLayoutListener() {
 export function addMovieSelectLayoutListener() {
     const element = getElementByIdFrom(
         "movie-type-select",
-        "addMovieGridLayoutListener"
+        "addMovieSelectLayoutListener"
     );
     const eventHandler = function () {
-        // setCurrentMovieListLayout(MovieListLayout.Grid);
         console.log('click en el boton')
     };
     element.addEventListener("click", eventHandler);
