@@ -3,15 +3,20 @@
  * 2. 
  */
 
-import { getElementByIdFrom } from "../../utils/utils";
+import { getElementByIdFrom } from "../utils/utils";
 import { getListMoviesData } from "../api";
 import { MovieList, MovieListType } from "../models";
 import { filterMoviesData } from "../mappers";
 import { addMovieListToolbar } from "./toolbar";
 
+let currentMovieListType = MovieListType.nowPlaying;
 
+export function setCurrentMovieListType(newValue: MovieListType) {
+    currentMovieListType = newValue;
+    addMovieListGrid();
+}
 
-export async function addMovieListGrid(movieListType: MovieListType): Promise<void> {
+export async function addMovieListGrid(): Promise<void> {
 
     const appElement = getElementByIdFrom("app", "addMovieListGrid");
     appElement.innerHTML = "";
@@ -19,6 +24,7 @@ export async function addMovieListGrid(movieListType: MovieListType): Promise<vo
 
     const container = document.createElement("div");
     container.className = "container";
+    container.setAttribute("id","contenedor")
 
     const row = document.createElement("div");
     row.className = "row";   
@@ -26,18 +32,21 @@ export async function addMovieListGrid(movieListType: MovieListType): Promise<vo
     appElement.appendChild(container)
     container.appendChild(row)
 
-    const moviesData = await getListMoviesData(movieListType);
+    const moviesData = await getListMoviesData(currentMovieListType);
     moviesData.forEach((movieData: MovieList) => {
         const col = document.createElement("div");
         col.className = "col-lg-3 col-md-4 col-sm-6"
-        
+               
         const card = document.createElement("div");
-        card.className ="card"
+        card.className ="movie-card"
+        card.setAttribute("id", "details");
 
         card.innerHTML = `
-        <img src="http://image.tmdb.org/t/p/w500//${movieData.cover}" alt="">
-        <h1>${movieData.title}</h1>
-        <p>${movieData.description}dfsdfadfas</p>
+        <img id="data-movie-img" class="movie-poster" src="http://image.tmdb.org/t/p/w500//${movieData.cover}" alt="">
+        <div>
+            <h1 class="title">${movieData.title}</h1>
+            <p>${movieData.description}</p>
+        </div>
         `
         col.appendChild(card)
         
@@ -47,9 +56,51 @@ export async function addMovieListGrid(movieListType: MovieListType): Promise<vo
     
 }
 
+export async function addMovieList(): Promise<void> {
 
+    const appElement = getElementByIdFrom("app", "addMovieListGrid");
+    appElement.innerHTML = "";
+    addMovieListToolbar()
 
+    const container = document.createElement("div");
+    container.className = "container";
+    container.setAttribute("id","contenedor")
 
+    const row = document.createElement("div");
+    row.className = "row";   
+
+    appElement.appendChild(container)
+    container.appendChild(row)
+
+    const moviesData = await getListMoviesData(currentMovieListType);
+    moviesData.forEach((movieData: MovieList) => {
+        const col = document.createElement("div");
+        col.setAttribute("id", "columna" ) 
+        
+        const card = document.createElement("div");
+        card.className ="movie-card"
+        card.setAttribute("id", "details");
+
+        card.innerHTML = `
+        <img src="http://image.tmdb.org/t/p/w500//${movieData.cover}" alt="">
+        <div>
+            <h1 class="title">${movieData.title}</h1>
+            <p>${movieData.description}</p>
+        </div>
+        `
+        col.appendChild(card)
+        
+        row.appendChild(col)
+
+    });;
+    
+}
+
+export function clean() {
+    const appElement = getElementByIdFrom("app", "clean");
+    appElement.innerHTML = "";
+
+}
 
 
 

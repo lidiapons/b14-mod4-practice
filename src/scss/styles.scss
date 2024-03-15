@@ -2,31 +2,38 @@
 
 // @use "bootstrap-icons";
 
-.card h1 {
-    font-size: 25px;
-}
-
-.card p {
-    font-size: 12px;
-}
-
-.card img {
-    height: 300px;
-    width: 250px;
-    object-fit: cover;
-    padding: 25px;
-}
-
-.card {
+.movie-card {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    margin: 15px 0 0;
     padding: 10px;
+
+    .title {
+        font-size: 25px;
+    }
+
+    p {
+        font-size: 12px;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    img {
+        height: 400px;
+        width: 100%;
+        margin-bottom: 15px;
+    }
 }
 
-.list{
+.list {
     display: flex;
     flex-wrap: wrap;
+}
+
+.listado {
+    background-color: black;
 }
 
 @import "bootstrap/scss/bootstrap";
