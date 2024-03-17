@@ -1,4 +1,5 @@
 //Sass
+import { AddMovieDetailsListener } from "../events/events";
 import "../scss/styles.scss";
 
 // Typescript
@@ -9,6 +10,6 @@ import { addMovieListGrid } from "./movie/movie-list";
 // })
 
 addMovieListGrid();
-
+AddMovieDetailsListener()
 
 

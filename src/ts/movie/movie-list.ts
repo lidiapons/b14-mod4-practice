@@ -82,7 +82,7 @@ export async function addMovieList(): Promise<void> {
         card.setAttribute("id", "details");
 
         card.innerHTML = `
-        <img src="http://image.tmdb.org/t/p/w500//${movieData.cover}" alt="">
+        <img id="data-movie-img" class="movie-poster" src="http://image.tmdb.org/t/p/w500//${movieData.cover}" alt="">
         <div>
             <h1 class="title">${movieData.title}</h1>
             <p>${movieData.description}</p>
