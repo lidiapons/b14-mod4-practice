@@ -34,51 +34,15 @@ export function addMovieSelectMovieTypeListener() {
 }
 
 
-//No se hacer esto
-
-// export function AddMovieDetailsListener(){
-//     const contenedor = document.getElementById("contenedor")
-//     contenedor.addEventListener("click", () => {
-//         console.log("hola")
-//     })
-// }
-//     const target = contenedor.target
-   
-//     if ( 
-//         target.className === "movie-poster" &&
-//         target.hasAttribute("data-movie-img")
-//     ) {
-//         const movieID = target.getAttribute("data-movie-id");
-//         if (movieID.length > 0) console.log(Number(movieID))
-//         }
-
-
-    // export function AddMovieDetailsListener() {
-    //     const contenedor = document.getElementById("contenedor");
-    //     contenedor.addEventListener("click", (event) => {
-    //         let target = event.target;
-    //         if (
-    //             target.className === "movie-poster" &&
-    //             target.hasAttribute("data-movie-id")
-    //         ) {
-    //             const movieId = target.id;
-    //             console.log(movieId)
-
-    //             // const movieID = target.getAttribute("data-movie-id");
-    //             // if (movieID.length > 0) console.log(Number(movieID));
-    //         }
-
-    //     });
-    // }
 
     export function AddMovieDetailsListener() {
         const contenedor = getElementByIdFrom("contenedor", "AddMovieDetailsListener")
         contenedor.addEventListener("click", (event) => {
             const target = event.target as HTMLElement
 
-            if (target.className === "movie-card" && 
-                target.hasAttribute("details")) {
-                    const movieID = target.getAttribute("details");
+            if (target.className === "movie-poster" && 
+                target.hasAttribute("movieID")) {
+                    const movieID = target.getAttribute("movieID");
 
                     console.log(movieID);
                 }

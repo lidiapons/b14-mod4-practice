@@ -1,4 +1,4 @@
-import { filterMoviesData, filterSearchMovie} from '../ts/mappers';
+import { fetchMovieDetailsUrl, filterMoviesData, filterSearchMovie} from '../ts/mappers';
 import { MovieList, MovieListType } from './models';
 
 const config = {
@@ -19,6 +19,16 @@ export async function getListMoviesData(movieListType: MovieListType, page = 1):
     return filterMoviesData(data?.results ?? []);
 };
 
+// 'https://api.themoviedb.org/3/movie/movie_id?language=en-US'
+
+export async function getMovieDetailsUrl(movie_id: any) {
+    const movieDetailsUrl = `${config.baseUrl}/movie/${movie_id}?language=${config.langIso}&api_key=${config.apiKey}`;
+    const response = await fetch(movieDetailsUrl)
+    const data = await response.json()
+
+    return fetchMovieDetailsUrl(data?.results  ??[]);
+}
+
 
 //  --url 'https://api.themoviedb.org/3/search/movie?query=batman&include_adult=false&language=en-US&page=1' \
 
@@ -29,3 +39,5 @@ export async function searchMovie(query: string, page = 1) {
     const data = await response.json()
     return filterMoviesData(data?.results ?? [])
 }
+
+

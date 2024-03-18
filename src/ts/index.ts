@@ -1,6 +1,7 @@
 //Sass
 import { AddMovieDetailsListener } from "../events/events";
 import "../scss/styles.scss";
+import { getMovieDetailsUrl } from "./api";
 
 // Typescript
 import { addMovieListGrid } from "./movie/movie-list";
@@ -9,7 +10,8 @@ import { addMovieListGrid } from "./movie/movie-list";
 //     showContent(movies)
 // })
 
+
 addMovieListGrid();
 AddMovieDetailsListener()
-
+getMovieDetailsUrl()
 

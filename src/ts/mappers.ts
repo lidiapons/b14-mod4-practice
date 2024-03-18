@@ -35,3 +35,13 @@ export function filterSearchMovie(movies: any) {
         rating: movie.rating,
     }))
 }
+export function fetchMovieDetailsUrl(movies: { id: any; title: any; overview: any; porter_path: any; release_date: string; rating: any; }[]) {
+    return movies.map((movie: { id: any; title: any; overview: any; porter_path: any; release_date: string; rating: any; }) => ({
+        id: movie.id,
+        title: movie.title,
+        overview: movie.overview,
+        poster_path: movie.porter_path,
+        year: movie.release_date.split("-").shift(),
+        rating: movie.rating,
+    }))
+}

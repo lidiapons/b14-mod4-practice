@@ -4,10 +4,11 @@
  */
 
 import { getElementByIdFrom } from "../utils/utils";
-import { getListMoviesData } from "../api";
+import { getListMoviesData, getMovieDetailsUrl } from "../api";
 import { MovieList, MovieListType } from "../models";
-import { filterMoviesData } from "../mappers";
+import { fetchMovieDetailsUrl, filterMoviesData } from "../mappers";
 import { addMovieListToolbar } from "./toolbar";
+import { AddMovieDetailsListener } from "../../events/events";
 
 let currentMovieListType = MovieListType.nowPlaying;
 
@@ -42,7 +43,7 @@ export async function addMovieListGrid(): Promise<void> {
         card.setAttribute("id", "details");
 
         card.innerHTML = `
-        <img id="data-movie-img" class="movie-poster" src="http://image.tmdb.org/t/p/w500//${movieData.cover}" alt="">
+        <img id="data-movie-img" movieID=${movieData.id} class="movie-poster" src="http://image.tmdb.org/t/p/w500//${movieData.cover}" alt="">
         <div>
             <h1 class="title">${movieData.title}</h1>
             <p>${movieData.description}</p>
@@ -82,7 +83,7 @@ export async function addMovieList(): Promise<void> {
         card.setAttribute("id", "details");
 
         card.innerHTML = `
-        <img id="data-movie-img" class="movie-poster" src="http://image.tmdb.org/t/p/w500//${movieData.cover}" alt="">
+        <img id="data-movie-img" movieID=${movieData.id} class="movie-poster" src="http://image.tmdb.org/t/p/w500//${movieData.cover}" alt="">
         <div>
             <h1 class="title">${movieData.title}</h1>
             <p>${movieData.description}</p>
@@ -100,8 +101,19 @@ export function clean() {
     const appElement = getElementByIdFrom("app", "clean");
     appElement.innerHTML = "";
 
+    addMovieListToolbar()
+
 }
 
+// function getMovieDetailsUrl(movieID: number) {
+//     return `https://api.themoviedb.org/3/movie/${movieID}?language=en-US`
+//     console.log(getMovieDetailsUrl(100))
+// }
+
+export async function getMovieDetails (movieID){
+    const movieDetailsUrl = getMovieDetailsUrl(movieID);
+    return fetchMovieDetailsUrl
+}
 
 
 
