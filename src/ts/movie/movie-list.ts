@@ -110,10 +110,10 @@ export function clean() {
 //     console.log(getMovieDetailsUrl(100))
 // }
 
-export async function getMovieDetails (movieID){
-    const movieDetailsUrl = getMovieDetailsUrl(movieID);
-    return fetchMovieDetailsUrl
-}
+// export async function getMovieDetails (movieID){
+//     const movieDetailsUrl = getMovieDetailsUrl(movieID);
+//     return fetchMovieDetailsUrl
+// }
 
 
 

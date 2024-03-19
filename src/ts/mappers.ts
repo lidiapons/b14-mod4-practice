@@ -36,6 +36,7 @@ export function filterSearchMovie(movies: any) {
     }))
 }
 export function fetchMovieDetailsUrl(movies: { id: any; title: any; overview: any; porter_path: any; release_date: string; rating: any; }[]) {
+    console.log(movies)
     return movies.map((movie: { id: any; title: any; overview: any; porter_path: any; release_date: string; rating: any; }) => ({
         id: movie.id,
         title: movie.title,

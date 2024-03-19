@@ -33,7 +33,7 @@ export function addMovieSelectMovieTypeListener() {
     })
 }
 
-
+export let movieID
 
     export function AddMovieDetailsListener() {
         const contenedor = getElementByIdFrom("contenedor", "AddMovieDetailsListener")
@@ -42,7 +42,7 @@ export function addMovieSelectMovieTypeListener() {
 
             if (target.className === "movie-poster" && 
                 target.hasAttribute("movieID")) {
-                    const movieID = target.getAttribute("movieID");
+                     movieID = target.getAttribute("movieID");
 
                     console.log(movieID);
                 }
